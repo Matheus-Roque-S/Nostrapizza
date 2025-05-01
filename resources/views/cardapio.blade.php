@@ -25,6 +25,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        min-height: 100vh;
     }
 
     h1,
@@ -157,7 +158,7 @@
         @foreach ($bebidas as $bebida)
         <section class="bebida">
             <h3>{{ $bebida->nome }}</h3>
-            <h3>R$ {{ $borda->preçog }}</h3>
+            <h3>R$ {{ $bebida->preçog }}</h3>
         </section>
         @endforeach
     </main>
