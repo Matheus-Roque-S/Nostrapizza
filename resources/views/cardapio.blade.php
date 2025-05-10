@@ -131,6 +131,8 @@
 </style>
 
 <body>
+
+
     <main>
         <img src="{{ asset('img/logonostrapizza.png') }}" alt="" width="150px">
         <h1>PIZZAS</h1>
@@ -139,10 +141,11 @@
             <h3>{{ $pizza->nome }}</h3>
             <p>{{ $pizza->ingredientes }}</p>
             <div>
-                <h3> G - R$ {{$pizza->preçog}} </h3>
-                <h3> M - R$ {{$pizza->preçom}} </h3>
-                <h3> P - R$ {{$pizza->preçop}} </h3>
+                <h3> G - R$ {{$pizza->preco_g}} </h3>
+                <h3> M - R$ {{$pizza->preco_m}} </h3>
+                <h3> P - R$ {{$pizza->preco_p}} </h3>
             </div>
+            
         </section>
         @endforeach
 
@@ -150,7 +153,7 @@
         @foreach ($borda as $borda)
         <section class="borda">
             <h3>{{ $borda->nome }}</h3>
-            <h3>R$ {{ $borda->preçog }}</h3>
+            <h3>R$ {{ $borda->preco_g }}</h3>
         </section>
         @endforeach
 
@@ -158,7 +161,7 @@
         @foreach ($bebidas as $bebida)
         <section class="bebida">
             <h3>{{ $bebida->nome }}</h3>
-            <h3>R$ {{ $bebida->preçog }}</h3>
+            <h3>R$ {{ $bebida->preco_g }}</h3>
         </section>
         @endforeach
     </main>
@@ -178,6 +181,7 @@
                 <a href="https://wa.me/17996134040" target="_blank"><img src="{{ asset('img/whatssaplogo.png') }}" alt="Whatssap" width="50px"></a>
                 <a href="https://pt-br.facebook.com/PizzariaNostraPizza/" target="_blank"><img src="{{ asset('img/logofacebook.png') }}" alt="Facebook" width="50px"></a>
             </div>
+            
     </footer>
 </body>
 

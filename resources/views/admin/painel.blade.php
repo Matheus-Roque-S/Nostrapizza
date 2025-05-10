@@ -47,6 +47,22 @@
         cursor: pointer;
     }
 
+    a.btn {
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 20px;
+        background-color: #543800;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        
+    }
+    
+
+
     @media screen and (max-width: 600px) {
         section {
             min-width: 90%;
@@ -59,10 +75,10 @@
     <img src="{{ asset('img/logonostrapizza.png') }}" alt="" width="125px">
     <section>
         <h1>Painel admin</h1>
-        <button>Cadastrar pizza</button>
-        <button>Cadastrar bordas</button>
-        <button>Cadastrar bebidas</button>
-        <button>Excluir e editar</button>
+
+        <a href="{{ route('admin.cadastro') }}" class="btn">Adicionar produto ao cardápio</a>
+        <a href="{{ route('admin.cardapio') }}" class="btn">Excluir e editar</a>
+
     </section>
     <form method="POST" action="{{ route('admin.logout') }}">
         @csrf
