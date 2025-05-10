@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Editar Item</title>
@@ -51,6 +52,11 @@
 
     body {
         background-color: #543800;
+        font-weight: normal;
+    }
+
+    main {
+        background-color: #543800;
         font-family: 'Bebas Neue';
         font-weight: normal;
         min-height: 100vh;
@@ -58,110 +64,114 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 5px;
+        font-size: 25px;
     }
 
     form {
         display: flex;
         flex-direction: column;
+        gap: 2px;
         background-color: white;
         padding: 20px;
         border-radius: 10px;
-        gap: 2px;
-        width: 220px;
+        width: 300px;
     }
 
-    form div {
+    div {
         display: flex;
         flex-direction: column;
+    }
+
+    input,
+    textarea,
+    select {
+        padding: 5px;
+        border-radius: 10px;
+        border: solid 1px black;
+        font-size: 20px;
+    }
+
+    textarea {
+        resize: none;
+        height: 100px;
     }
 
     button {
         padding: 10px;
         border-radius: 5px;
         border: 1px solid #ccc;
-        font-size: 14px;
+        font-size: 20px;
         background-color: #543800;
         color: white;
         cursor: pointer;
+        margin-top: 10px;
     }
 
-    label {
-        color: black;
-        font-size: 18px;
-    }
 
-    textarea {
-        resize: none;
-        height: 60px;
-    }
-
-    p {
-        display: flex;
-        gap: 5px;
-        font-size: 20px;
-        text-shadow:
-            -1px -1px 0 whitesmoke,
-            1px -1px 0 whitesmoke,
-            -1px 1px 0 whitesmoke,
-            1px 1px 0 whitesmoke;
-    }
-
-    a {
-        color: black;
-        text-shadow:
-            -1px -1px 0 gold,
-            1px -1px 0 gold,
-            -1px 1px 0 gold,
-            1px 1px 0 gold;
-        font-size: 20px;
+    a.btn {
+        margin-top: 10px;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #543800;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        width: 30px;
     }
 </style>
-<body>
-    <h2>Editar Item do Cardápio</h2>
 
-    @if ($errors->any())
+<body>
+    <main>
+        <h2>Editar Item do Cardápio</h2>
+
+        @if ($errors->any())
         <div>
             <strong>Erros:</strong>
             <ul>
                 @foreach ($errors->all() as $erro)
-                    <li>{{ $erro }}</li>
+                <li>{{ $erro }}</li>
                 @endforeach
             </ul>
         </div>
-    @endif
+        @endif
 
-    <form action="{{ route('admin.cardapio.update', $item->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+        <form action="{{ route('admin.cardapio.update', $item->id) }}" method="POST">
+            @csrf
+            @method('PUT')
 
-        <label>Nome:</label>
-        <input type="text" name="nome" value="{{ $item->nome }}" required>
+            <label>Nome:</label>
+            <input type="text" name="nome" value="{{ $item->nome }}" required>
 
-        <label class="ingredientes-input">Ingredientes:</label>
-        <input class="ingredientes-input" type="text" name="ingredientes" value="{{ $item->ingredientes }}">
+            <label class="ingredientes-input">Ingredientes:</label>
+            <input class="ingredientes-input" type="text" name="ingredientes" value="{{ $item->ingredientes }}">
 
-        <label>Categoria:</label>
-        <select name="categoria" id="categoria" required>
-            <option value="pizza" {{ $item->categoria == 'pizza' ? 'selected' : '' }}>Pizza</option>
-            <option value="borda" {{ $item->categoria == 'borda' ? 'selected' : '' }}>Borda</option>
-            <option value="bebidas" {{ $item->categoria == 'bebidas' ? 'selected' : '' }}>Bebida</option>
-        </select>
+            <label>Categoria:</label>
+            <select name="categoria" id="categoria" required>
+                <option value="pizza" {{ $item->categoria == 'pizza' ? 'selected' : '' }}>Pizza</option>
+                <option value="borda" {{ $item->categoria == 'borda' ? 'selected' : '' }}>Borda</option>
+                <option value="bebidas" {{ $item->categoria == 'bebidas' ? 'selected' : '' }}>Bebida</option>
+            </select>
 
-         <div id="campo-preco_p">
-            <label>Preço Pequeno:</label>
-            <input type="number" step="0.01" name="preco_p" value="{{ $item->preco_p }}">
-        </div>
+            <div id="campo-preco_p">
+                <label>Preço Pequeno:</label>
+                <input type="number" step="0.01" name="preco_p" value="{{ $item->preco_p }}">
+            </div>
 
-        <div id="campo-preco_m">
-            <label>Preço Médio:</label>
-            <input type="number" step="0.01" name="preco_m" value="{{ $item->preco_m }}">
-        </div>
+            <div id="campo-preco_m">
+                <label>Preço Médio:</label>
+                <input type="number" step="0.01" name="preco_m" value="{{ $item->preco_m }}">
+            </div>
 
-        <label id="label-preco_g">Preço Grande:</label>
-        <input type="number" step="0.01" name="preco_g" value="{{ $item->preco_g }}">
+            <label id="label-preco_g">Preço Grande:</label>
+            <input type="number" step="0.01" name="preco_g" value="{{ $item->preco_g }}">
 
-        <button type="submit">Salvar Alterações</button>
-    </form>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </main>
+
 </body>
+
 </html>

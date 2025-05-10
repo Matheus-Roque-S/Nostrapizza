@@ -148,11 +148,11 @@
     }
 
     a.btn {
+        margin-top: 10px;
         display: block;
         padding: 10px;
         border-radius: 5px;
-        border: 1px solid #ccc;
-        font-size: 20px;
+        border: 1px solid #ccc; 
         background-color: #543800;
         color: white;
         text-align: center;
